@@ -19,6 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [ 
+                "Armincms\\Noobar\\NoobarServiceProvider"
             ]
         }
     },
