@@ -18,7 +18,7 @@ class NoobarServiceProvider extends ServiceProvider
      */
     public function boot()
     {    
-    	$this->loadTranslationsFrom(__DIR__.'/../resources/lang');
+    	$this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
     	$this->loadMigrationsFrom(__DIR__.'/../database/migrations'); 
     }
 
