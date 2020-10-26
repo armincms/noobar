@@ -52,8 +52,10 @@ class NoobarServiceProvider extends ServiceProvider
      */
     public function servingSnail()
     {
-    	Snail::resources([
-    		Slide::class,
-    	]);
+    	Snail::version('1.0.0', function($snail) { 
+            $snail::resources([
+                Slide::class,
+            ]);
+        });
     } 
 }
