@@ -49,7 +49,7 @@ class Slide extends Schema
 
             Number::make('Order')->nullable(),
 
-            Collection::make('Slides', function($value, $resource) {
+            Collection::make('Images', function($resource) {
                     return static::newModel()->getConversions($resource->getFirstMedia('image'), [
                         'main', 'noobar.slide', 'thumbnail'
                     ]); 
@@ -62,7 +62,7 @@ class Slide extends Schema
 
                         Text::make('Thumbnail')->nullable(true, ['']),
                     ];
-                }); 
+                }),
         ];
     } 
 
