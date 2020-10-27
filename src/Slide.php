@@ -49,29 +49,20 @@ class Slide extends Schema
 
             Number::make('Order')->nullable(),
 
-            Map::make('Slides', function($resource) { 
-                    return $resource->getMedia('image'); 
+            Collection::make('Slides', function($value, $resource) {
+                    return static::newModel()->getConversions($resource->getFirstMedia('image'), [
+                        'main', 'noobar.slide', 'thumbnail'
+                    ]); 
                 }) 
-                ->using(function($attribute) { 
-                    return  Collection::make($attribute)
-                                ->resolveUsing(function($value) {
-                                    return static::newModel()->getConversions($value, [
-                                        'main', 'noobar.slide', 'thumbnail'
-                                    ]); 
-                                })
-                                ->properties(function() {  
-                                    return [
-                                        Text::make('Main')
-                                            ->nullable(true, ['']),
+                ->properties(function() {  
+                    return [
+                        Text::make('Main')->nullable(true, ['']),
 
-                                        Text::make('Noobar', 'noobar.slider')
-                                            ->nullable(true, ['']),
+                        Text::make('Noobar', 'noobar.slider')->nullable(true, ['']),
 
-                                        Text::make('Thumbanil')
-                                            ->nullable(true, ['']),
-                                    ];
-                                });
-                }),
+                        Text::make('Thumbnail')->nullable(true, ['']),
+                    ];
+                }); 
         ];
     } 
 

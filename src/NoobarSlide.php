@@ -17,8 +17,7 @@ class NoobarSlide extends Model implements HasMedia
      */
     protected $medias = [
         'image' => [ 
-            'disk'  => 'armin.image',
-            'multiple'  => true,
+            'disk'  => 'armin.image', 
             'schemas' => [
                 'noobar.slider', '*'
             ]
