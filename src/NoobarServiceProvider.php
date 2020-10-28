@@ -20,6 +20,19 @@ class NoobarServiceProvider extends ServiceProvider
     {    
     	$this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
     	$this->loadMigrationsFrom(__DIR__.'/../database/migrations'); 
+
+      \Config::set('imager.schemas.logo', [
+          'group'         => '*', // group of usage
+          'name'          => 'logo', // unique name
+          'resize'        => 'crop', // resize type
+          'width'         => 150,
+          'height'        => 150,
+          'position'      => 'center', // crop postiion anchor
+          'upsize'        => false, // cutting type
+          'compress'      => 75,
+          'extension'     => null, // save extension
+          'placeholder'   => image_placeholder(150, 150),
+      ]);
     }
 
     /**
