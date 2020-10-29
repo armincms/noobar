@@ -21,7 +21,7 @@ class NoobarServiceProvider extends ServiceProvider
     	$this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
     	$this->loadMigrationsFrom(__DIR__.'/../database/migrations'); 
 
-      \Config::set('imager.schemas.logo', [
+        \Config::set('imager.schemas.logo', [
           'group'         => '*', // group of usage
           'name'          => 'logo', // unique name
           'resize'        => 'crop', // resize type
@@ -32,7 +32,13 @@ class NoobarServiceProvider extends ServiceProvider
           'compress'      => 75,
           'extension'     => null, // save extension
           'placeholder'   => image_placeholder(150, 150),
-      ]);
+        ]);
+
+        $this->app->resolving('conversion', function($conversion) { 
+            $conversion->extend('noobar', function() {
+                return new SlideConversion;
+            });
+        });
     }
 
     /**

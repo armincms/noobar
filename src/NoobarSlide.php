@@ -4,11 +4,11 @@ namespace Armincms\Noobar;
 
 use Illuminate\Database\Eloquent\Model; 
 use Spatie\MediaLibrary\HasMedia\HasMedia;  
-use Armincms\Concerns\IntractsWithMedia; 
+use Armincms\Concerns\HasMediaTrait; 
 
 class NoobarSlide extends Model implements HasMedia
 {
-	use IntractsWithMedia;
+	use HasMediaTrait;
     
     /**
      * The related medias.
@@ -18,8 +18,8 @@ class NoobarSlide extends Model implements HasMedia
     protected $medias = [
         'image' => [ 
             'disk'  => 'armin.image', 
-            'schemas' => [
-                'noobar.slider', '*'
+            'conversions' => [
+                'common', 'noobar'
             ]
         ],
     ];

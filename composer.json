@@ -8,6 +8,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1.0",
+        "armincms/blogger": "~0.3",
         "armincms/blogger": "~0.1",
         "armincms/sofre-api": "*"
     },

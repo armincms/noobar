@@ -75,9 +75,9 @@ class Slide extends Resource
                 ->sortable(),
 
             Images::make(__('Image'), 'image')
-                ->conversionOnPreview('thumbnail') 
-                ->conversionOnDetailView('thumbnail') 
-                ->conversionOnIndexView('thumbnail')
+                ->conversionOnPreview('common-thumbnail') 
+                ->conversionOnDetailView('common-thumbnail') 
+                ->conversionOnIndexView('common-thumbnail')
                 ->fullSize(),
         ];
     } 
