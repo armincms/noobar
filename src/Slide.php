@@ -51,16 +51,16 @@ class Slide extends Schema
 
             Collection::make('Images', function($resource) {
                     return static::newModel()->getConversions($resource->getFirstMedia('image'), [
-                        'main', 'noobar.slide', 'thumbnail'
+                        'noobar-mobile', 'common-main', 'common-thumbnail'
                     ]); 
                 }) 
                 ->properties(function() {  
                     return [
-                        Text::make('Main')->nullable(true, ['']),
+                        Text::make('Main', 'common-main')->nullable(true, ['']),
 
-                        Text::make('Noobar', 'noobar.slider')->nullable(true, ['']),
+                        Text::make('Noobar', 'noobar-mobile')->nullable(true, ['']),
 
-                        Text::make('Thumbnail')->nullable(true, ['']),
+                        Text::make('Thumbnail', 'common-thumbnail')->nullable(true, ['']),
                     ];
                 }),
         ];

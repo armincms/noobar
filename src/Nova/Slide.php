@@ -62,11 +62,11 @@ class Slide extends Resource
                 ->nameLabel()
                 ->alwaysClickable(),
 
-            Number::make(__('Slide Order'), 'order')
-                ->withMeta([
-                    'value' => $this->order ?? static::newModel()->max('order')
-                ])
-                ->sortable(),
+            Number::make(__('Slide Order'), 'order') 
+                ->sortable()
+                ->fillUsing(function($request, $model, $attribute, $requestAttribute) {
+                    return intval($request->get('order')) ?: (static::newModel()->max('order') + 1);
+                }),
 
             Boolean::make(__('Show Slide'), 'active')
                 ->withMeta([
