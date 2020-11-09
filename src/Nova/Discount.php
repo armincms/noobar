@@ -4,7 +4,7 @@ namespace Armincms\Noobar\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\{ID, Text, Select, Boolean};
+use Laravel\Nova\Fields\{ID, Text, Select, Boolean, Number};
 use Inspheric\Fields\Url;
 use OptimistDigital\MultiselectField\Multiselect;
 use Armincms\Nova\Fields\Images;
@@ -85,6 +85,13 @@ class Discount extends Resource
                                             ->required()
                                             ->rules('required');
                             }),
+
+                            $this->when(intval($request->get('manual')) === 0, function() {
+                                return  Number::make(__('Count'), 'count') 
+                                            ->min(1)
+                                            ->required()
+                                            ->rules('required', 'min:1');
+                            }),
                         ]);  
             }, 'meal-chain'),
 
@@ -99,6 +106,9 @@ class Discount extends Resource
                     }),
                 ]);
             }), 
+
+            Boolean::make(__('Active'), 'active')
+                ->required(),
         ];
     } 
 
