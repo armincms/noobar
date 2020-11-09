@@ -19,20 +19,7 @@ class NoobarServiceProvider extends ServiceProvider
     public function boot()
     {    
     	$this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
-    	$this->loadMigrationsFrom(__DIR__.'/../database/migrations'); 
-
-        \Config::set('imager.schemas.logo', [
-          'group'         => '*', // group of usage
-          'name'          => 'logo', // unique name
-          'resize'        => 'crop', // resize type
-          'width'         => 150,
-          'height'        => 150,
-          'position'      => 'center', // crop postiion anchor
-          'upsize'        => false, // cutting type
-          'compress'      => 75,
-          'extension'     => null, // save extension
-          'placeholder'   => image_placeholder(150, 150),
-        ]);
+    	$this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->app->resolving('conversion', function($conversion) { 
             $conversion->extend('noobar', function() {
@@ -60,7 +47,8 @@ class NoobarServiceProvider extends ServiceProvider
     public function servingNova()
     {
     	LaravelNova::resources([
-    		Nova\Slide::class
+    		Nova\Slide::class,
+            Nova\Discount::class,
     	]);
     }
 
@@ -74,6 +62,7 @@ class NoobarServiceProvider extends ServiceProvider
     	Snail::version('1.0.0', function($snail) { 
             $snail::resources([
                 Slide::class,
+                Discount::class,
             ]);
         });
     } 

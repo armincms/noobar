@@ -10,7 +10,9 @@
         "php": ">=7.1.0",
         "armincms/blogger": "~0.3",
         "armincms/blogger": "~0.1",
-        "armincms/sofre-api": "*"
+        "armincms/chain": "~0.3",
+        "armincms/sofre-api": "*",
+        "optimistdigital/nova-multiselect-field": "^1.11"
     },
     "autoload": {
         "psr-4": {
