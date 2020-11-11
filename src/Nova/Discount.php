@@ -110,7 +110,7 @@ class Discount extends Resource
             Boolean::make(__('Active'), 'active')
                 ->required(), 
 
-            Images::make(__('Icon'), 'icon')
+            Images::make(__('Logo'), 'logo')
                 ->conversionOnPreview('common-thumbnail') 
                 ->conversionOnDetailView('common-thumbnail') 
                 ->conversionOnIndexView('common-thumbnail')
