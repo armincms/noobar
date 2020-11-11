@@ -32,7 +32,7 @@ class NoobarDiscount extends Model implements HasMedia
      * @var array
      */
     protected $medias = [
-        'icon' => [ 
+        'logo' => [ 
             'disk'  => 'armin.image', 
             'conversions' => [
                 'common', 'noobar'

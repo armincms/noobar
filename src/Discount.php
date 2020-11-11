@@ -49,7 +49,22 @@ class Discount extends Schema
     public function properties(Request $request)
     {
         return [
-            Text::make('Title')->nullable(),  
+            Text::make('Title')->nullable(),   
+
+            Collection::make('Images', function($resource) {
+                    return static::newModel()->getConversions($resource->getFirstMedia('logo'), [
+                        'noobar-mobile', 'common-main', 'common-thumbnail'
+                    ]); 
+                }) 
+                ->properties(function() {  
+                    return [
+                        Text::make('Main', 'common-main')->nullable(true, ['']),
+
+                        Text::make('Noobar', 'noobar-mobile')->nullable(true, ['']),
+
+                        Text::make('Thumbnail', 'common-thumbnail')->nullable(true, ['']),
+                    ];
+                }),
 
             Map::make('Foods', function($resource) {
                     return static::foods($resource); 

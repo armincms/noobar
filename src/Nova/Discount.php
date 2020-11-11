@@ -108,7 +108,13 @@ class Discount extends Resource
             }), 
 
             Boolean::make(__('Active'), 'active')
-                ->required(),
+                ->required(), 
+
+            Images::make(__('Icon'), 'icon')
+                ->conversionOnPreview('common-thumbnail') 
+                ->conversionOnDetailView('common-thumbnail') 
+                ->conversionOnIndexView('common-thumbnail')
+                ->fullSize(),
         ];
     } 
 
