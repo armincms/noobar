@@ -36,6 +36,8 @@ class Discount extends Schema
         'id',
     ];
 
+    public static $restaurants = null;
+
     public static $menus = null;
 
     public static $discounts = null;
@@ -75,6 +77,10 @@ class Discount extends Schema
                             ID::make(),
 
                             Text::make('Name'),
+
+                            Text::make(__('Restaurant'), function($resource) { 
+                                return static::restaurants()->find($resource->pivot->restaurant_id)->name;
+                            }),
 
                             Map::make('Material', function($resource) {
                                     return collect($resource->material)->map(function($value, $name) {
@@ -161,10 +167,19 @@ class Discount extends Schema
     public static function menus()
     {
         if(! isset(static::$menus)) {
-            static::$menus = Restaurant::with(['foods'])->get()->flatMap->foods;
+            static::$menus = static::restaurants()->flatMap->foods;
         }
 
         return static::$menus;
+    }
+
+    public static function restaurants()
+    { 
+        if(! isset(static::$restaurants)) {
+            static::$restaurants = Restaurant::with(['foods'])->get();
+        }
+
+        return static::$restaurants;
     }
 
 
