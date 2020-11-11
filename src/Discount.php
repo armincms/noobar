@@ -78,7 +78,7 @@ class Discount extends Schema
 
                             Text::make('Name'),
 
-                            Text::make(__('Restaurant'), function($resource) { 
+                            Text::make('Restaurant', function($resource) { 
                                 return static::restaurants()->find($resource->pivot->restaurant_id)->name;
                             }),
 
