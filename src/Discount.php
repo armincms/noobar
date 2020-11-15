@@ -82,6 +82,8 @@ class Discount extends Schema
                                 return static::restaurants()->find($resource->pivot->restaurant_id)->name;
                             }),
 
+                            Integer::make('RestaurantId', 'pivot->restaurant_id'),
+
                             Map::make('Material', function($resource) {
                                     return collect($resource->material)->map(function($value, $name) {
                                         return compact('name', 'value');
