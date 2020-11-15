@@ -55,14 +55,14 @@ class Discount extends Schema
 
             Collection::make('Images', function($resource) {
                     return static::newModel()->getConversions($resource->getFirstMedia('logo'), [
-                        'noobar-mobile', 'common-main', 'common-thumbnail'
+                        'noobar-discount', 'common-main', 'common-thumbnail'
                     ]); 
                 }) 
                 ->properties(function() {  
                     return [
                         Text::make('Main', 'common-main')->nullable(true, ['']),
 
-                        Text::make('Noobar', 'noobar-mobile')->nullable(true, ['']),
+                        Text::make('Noobar', 'noobar-discount')->nullable(true, ['']),
 
                         Text::make('Thumbnail', 'common-thumbnail')->nullable(true, ['']),
                     ];
