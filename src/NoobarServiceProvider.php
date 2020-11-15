@@ -25,6 +25,9 @@ class NoobarServiceProvider extends ServiceProvider
             $conversion->extend('noobar', function() {
                 return new SlideConversion;
             });
+            $conversion->extend('noobar', function() {
+                return new DiscountConversion;
+            });
         });
     }
 
