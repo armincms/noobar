@@ -12,6 +12,7 @@
         "armincms/blogger": "~0.1",
         "armincms/chain": "~0.3",
         "armincms/sofre-api": "*",
+        "armincms/passport": "*",
         "optimistdigital/nova-multiselect-field": "^1.11"
     },
     "autoload": {
