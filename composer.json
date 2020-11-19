@@ -12,6 +12,7 @@
         "armincms/chain": "~0.3",
         "armincms/sofre-api": "*",
         "armincms/sanctum-login": "*",
+        "armincms/arminsms": "~0.1",
         "optimistdigital/nova-multiselect-field": "1.10.2"
     },
     "autoload": {
