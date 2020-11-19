@@ -8,8 +8,8 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1.0",
-        "armincms/blogger": "~0.3",
-        "armincms/blogger": "~0.1",
+        "armincms/armincms": "^0.3.3", 
+        "armincms/blogger": "~0.3", 
         "armincms/chain": "~0.3",
         "armincms/sofre-api": "*",
         "armincms/sanctum-login": "*",
