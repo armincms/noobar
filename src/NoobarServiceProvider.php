@@ -20,7 +20,12 @@ class NoobarServiceProvider extends ServiceProvider
     {    
     	$this->loadJsonTranslationsFrom(__DIR__.'/../resources/lang');
     	$this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->registerConversions();
+        $this->routes();
+    }
 
+    public function registerConversions()
+    { 
         $this->app->resolving('conversion', function($conversion) { 
             $conversion->extend('noobar', function() {
                 return new SlideConversion;
@@ -29,6 +34,14 @@ class NoobarServiceProvider extends ServiceProvider
                 return new DiscountConversion;
             });
         });
+    }
+
+    public function routes()
+    {
+        \Route::middleware('auth:sanctum')
+            ->prefix('api/user')
+            ->name('api.')
+            ->group(__DIR__.'/../routes/api.php'); 
     }
 
     /**
