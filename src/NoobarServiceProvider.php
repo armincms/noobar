@@ -22,6 +22,9 @@ class NoobarServiceProvider extends ServiceProvider
     	$this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->registerConversions();
         $this->routes();
+        $this->app->booted(function() { 
+            \Config::set('snail.middleware', array_merge(['auth:sanctum'], config('snail.middleware')));
+        });
     }
 
     public function registerConversions()
