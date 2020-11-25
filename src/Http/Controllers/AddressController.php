@@ -100,7 +100,7 @@ class AddressController extends Controller
 		]));
 
 		$config = array_filter($request->only([
-			'address', 'phone', 'mobile', 'mobile', 'zipcode', 'code'
+			'address', 'phone', 'mobile', 'zipcode', 'code', 'address_detail'
 		]));
 
 		return $address->forceFill(array_merge(
@@ -141,11 +141,11 @@ class AddressController extends Controller
 			'address' 	=> $address->config('address'),
 			'phone' 	=> $address->config('phone'),
 			'mobile' 	=> $address->config('mobile'),
-			'zipcode' 	=> $address->config('zipcode'),
-			'number' 	=> $address->config('number'),
+			'zipcode' 	=> $address->config('zipcode'), 
 			'latitude'  => $address->latitude,
 			'longitude' => $address->longitude,
-			'zone'		=> [
+			'address_detail'	=> $address->config('address_detail'),
+			'zone' => [
 				'id' => optional($address->zone)->id,
 				'name' => optional($address->zone)->name,
 			],
