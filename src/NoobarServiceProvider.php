@@ -38,10 +38,7 @@ class NoobarServiceProvider extends ServiceProvider
 
     public function routes()
     {
-        \Route::middleware('auth:sanctum')
-            ->prefix('api/user')
-            ->name('api.')
-            ->group(__DIR__.'/../routes/api.php'); 
+        \Route::prefix('api')->name('api.')->group(__DIR__.'/../routes/api.php'); 
     }
 
     /**
