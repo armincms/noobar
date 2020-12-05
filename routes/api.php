@@ -9,10 +9,10 @@ Route::get('user/profile', [
 	'as' => 'profile.show',
 ]);
 
-Route::get('setting', [
-	'uses' => SettingController::class.'@handle',
-	'as' => 'setting.show',
-]);
+// Route::get('setting', [
+// 	'uses' => SettingController::class.'@handle',
+// 	'as' => 'setting.show',
+// ]);
 
 Route::put('user/profile', [
 	'uses' => ProfileController::class.'@update',
