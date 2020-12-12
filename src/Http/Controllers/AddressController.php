@@ -60,7 +60,7 @@ class AddressController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		$request->validate($this->creationRules($request));
+		$request->validate($this->updateRules($request));
 
 		$address = \DB::transaction(function() use ($request, $id) { 
 			return  tap($this->fillFromRequest($request, NoobarAddress::findOrFail($id)), function($address) {
@@ -100,7 +100,7 @@ class AddressController extends Controller
 		]));
 
 		$config = array_filter($request->only([
-			'address', 'phone', 'mobile', 'zipcode', 'code', 'address_detail', 'firstname', 'lastname'
+			'address', 'phone', 'mobile', 'zipcode', 'code', 'address_detail', 'fullname'
 		]));
 
 		return $address->forceFill(array_merge(
@@ -128,6 +128,23 @@ class AddressController extends Controller
 	}
 
 	/**
+	 * Get the creation validation rules.
+	 * 
+	 * @param  \Illuminate\Http\Request $request 
+	 * @return array
+	 */
+	public function updateRules(Request $request)
+	{
+		return [ 
+			'zone_id' => [function($attribute, $value, $fail) {
+				if(! is_null($value) && is_null($zone = Location::zone()->find($value))) {
+					$fail(__('Invalid zone'));
+				}
+			}], 
+		];
+	}
+
+	/**
 	 * Display the address detail.
 	 * 
 	 * @param  \Armincms\Noobar\NoobarAddress $address 
@@ -144,6 +161,7 @@ class AddressController extends Controller
 			'zipcode' 	=> $address->config('zipcode'), 
 			'firstname'	=> $address->config('lastname'),
 			'lastname' 	=> $address->config('lastname'), 
+			'fullname' 	=> $address->config('fullname'), 
 			'latitude'  => $address->latitude,
 			'longitude' => $address->longitude,
 			'address_detail'	=> $address->config('address_detail'),
