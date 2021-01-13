@@ -3,6 +3,7 @@
 use Armincms\Noobar\Http\Controllers\ProfileController;
 use Armincms\Noobar\Http\Controllers\AddressController;
 use Armincms\Noobar\Http\Controllers\SettingController;
+use Armincms\Noobar\Http\Controllers\SearchController;
 
 Route::get('user/profile', [
 	'uses' => ProfileController::class.'@show',
@@ -20,3 +21,5 @@ Route::put('user/profile', [
 ]);
 
 Route::apiResource('user/address', AddressController::class);
+
+Route::get('1.0.0/sofre/{key}', SearchController::class.'@handle'); 
