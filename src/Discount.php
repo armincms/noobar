@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use Armincms\Snail\Snail;
 use Armincms\Snail\Schema;
 use Armincms\Snail\Properties\{ID, Text, Number, Integer, Boolean, Collection, Map};
-use Armincms\Sofre\Discount as SofreDiscount;
-use Armincms\Sofre\Restaurant;
+use Armincms\Sofre\Models\Discount as SofreDiscount;
+use Armincms\Sofre\Models\Restaurant;
 use Armincms\Sofre\Nova\Food;
 
 class Discount extends Schema
@@ -105,7 +105,7 @@ class Discount extends Schema
 
                             Number::make('Price', 'pivot->price')
                                 ->displayUsing(function($value, $resource, $attribute) {
-                                    return static::discounts($resource->pivot->restaurant_id)->applyOn($resource); 
+                                    return static::discounts($resource->pivot->restaurant_id)->applyOn($value); 
                                 }),  
 
                             Text::make('Comments', function($resource) {
