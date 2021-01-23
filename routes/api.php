@@ -8,12 +8,7 @@ use Armincms\Noobar\Http\Controllers\SearchController;
 Route::get('user/profile', [
 	'uses' => ProfileController::class.'@show',
 	'as' => 'profile.show',
-]);
-
-// Route::get('setting', [
-// 	'uses' => SettingController::class.'@handle',
-// 	'as' => 'setting.show',
-// ]);
+]); 
 
 Route::put('user/profile', [
 	'uses' => ProfileController::class.'@update',
