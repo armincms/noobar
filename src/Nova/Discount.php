@@ -9,7 +9,7 @@ use Inspheric\Fields\Url;
 use OptimistDigital\MultiselectField\Multiselect;
 use Armincms\Nova\Fields\Images;
 use Armincms\Fields\Chain;
-use Armincms\Sofre\Restaurant;
+use Armincms\Sofre\Models\Restaurant;
 
 class Discount extends Resource
 {
